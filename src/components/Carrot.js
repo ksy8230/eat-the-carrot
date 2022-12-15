@@ -1,6 +1,7 @@
 export default class Carrot {
   xPos;
   yPos;
+  carrotElem;
   constructor(elem) {
     this.elem = elem;
     this.makeRandom();
@@ -10,7 +11,7 @@ export default class Carrot {
     return `<div class="carrot">🥕</div>`;
   }
 
-  moveDown(currentCarrotElem) {
+  setPositionY(currentCarrotElem) {
     const carrot = currentCarrotElem;
     let y = 0;
     let id;
@@ -23,14 +24,13 @@ export default class Carrot {
         y++;
         carrot.style.top = y + "px";
         this.yPos = y;
+        // console.log(this.yPos)
       }
     }
   }
 
-  setRandomPosition(currentCarrotElem) {
+  setPositionX(currentCarrotElem) {
     const randomXPos = Math.random() * 800; // window.width
-    // const YPos = currentCarrotElem.getBoundingClientRect().y;
-    // console.log("YPos", YPos);
     this.xPos = randomXPos;
     currentCarrotElem.style.cssText = `position:absolute;left:${randomXPos}px;`;
   }
@@ -38,9 +38,11 @@ export default class Carrot {
   render() {
     const carrotsElem = document.createElement("div");
     carrotsElem.innerHTML = this.template();
-    this.setRandomPosition(carrotsElem);
-    this.moveDown(carrotsElem);
+    this.setPositionX(carrotsElem);
+    this.setPositionY(carrotsElem);
     this.elem.append(carrotsElem);
+    // console.log(carrotsElem)
+    this.carrotElem = carrotsElem;
   }
 
   makeRandom() {
@@ -48,6 +50,6 @@ export default class Carrot {
     clearInterval(id);
     id = setInterval(() => {
       this.render();
-    }, 3000);
+    }, 10000);
   }
 }

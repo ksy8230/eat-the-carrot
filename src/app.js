@@ -6,12 +6,15 @@ import PlayGame from "./components/PlayGame.js";
 class App {
   constructor() {
     const rabbit = new MoveRabbit(document.querySelector("#app"));
-    rabbit.setEvent();
+    // rabbit.setEvent();
     const carrot = new Carrot(document.querySelector("#app"));
-    new PlayGame({
+    const game = new PlayGame({
       elem: document.querySelector("#app"),
-      carrotYPos: carrot.yPos,
+      rabbit: rabbit,
+      carrot: carrot,
+      carrotElem: carrot.carrotElem,
     });
+    game.setEvent();
   }
 }
 
