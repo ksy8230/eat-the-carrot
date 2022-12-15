@@ -17,6 +17,5 @@ export default class MoveRabbit extends LoadRabbit {
     const rabbitRect = rabbitElem.getBoundingClientRect();
     this.xPos = rabbitRect.x; // 토끼 왼쪽끝
     this.yPos = rabbitRect.y; // 토끼 맨위
-    this.rabbitElem = rabbitElem;
   }
 }

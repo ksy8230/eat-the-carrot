@@ -4,10 +4,11 @@ import PlayGame from "./components/PlayGame.js";
 
 class App {
   constructor() {
-    const rabbit = new MoveRabbit(document.querySelector("#app"));
-    const carrot = new Carrot(document.querySelector("#app"), rabbit);
+    const app = document.querySelector("#app");
+    const rabbit = new MoveRabbit(app);
+    const carrot = new Carrot(app);
     new PlayGame({
-      elem: document.querySelector("#app"),
+      elem: app,
       rabbit: rabbit,
       carrot: carrot,
     });
